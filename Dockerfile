@@ -6,3 +6,4 @@ RUN curl -o /opt/jboss.zip http://download.jboss.org/jbossas/7.1/jboss-as-7.1.1.
 RUN cd /opt && unzip jboss.zip
 RUN cd /opt && ln -s jboss-as-7.1.1.Final jbossas7
 
+ADD mgmt-users.properties /opt/jbossas7/standalone/configuration/
