@@ -9,3 +9,6 @@ RUN curl -o /opt/jboss.zip http://download.jboss.org/jbossas/7.1/jboss-as-7.1.1.
 RUN cd /opt && ln -s jboss-as-7.1.1.Final jbossas7
 
 ADD mgmt-users.properties /opt/jbossas7/standalone/configuration/
+
+# Enable remote debugging
+RUN sed -i 's/#JAVA_OPTS="$JAVA_OPTS -Xrunjdwp:transport=dt_socket,address=8787,server=y,suspend=n"/JAVA_OPTS="$JAVA_OPTS -Xrunjdwp:transport=dt_socket,address=8787,server=y,suspend=n"/' /opt/jbossas7/bin/standalone.conf
